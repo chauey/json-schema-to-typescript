@@ -6,7 +6,10 @@
   "typings": "index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc && node index.js",
-    "clean": "rm -f index.js index.d.ts person.d.ts"
+    "clean": "rm -f index.js index.d.ts person.d.ts",
+    "build2": "npm run clean2 && tsc && node index.js",
+    "clean2": "del index.js index.d.ts oas3-interfaces.ts"
+    
   },
   "dependencies": {
     "@types/node": "^8.0.58",
