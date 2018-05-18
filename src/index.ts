@@ -1,16 +1,18 @@
-import { readFileSync } from 'fs'
-import { JSONSchema4 } from 'json-schema'
-import { endsWith, merge } from 'lodash'
-import { dirname } from 'path'
-import { Options as PrettierOptions } from 'prettier'
-import { format } from './formatter'
-import { generate } from './generator'
-import { normalize } from './normalizer'
-import { optimize } from './optimizer'
-import { parse } from './parser'
-import { dereference } from './resolver'
-import { error, stripExtension, Try } from './utils'
-import { validate } from './validator'
+import { readFileSync } from 'fs';
+import { JSONSchema4 } from 'json-schema';
+import { endsWith, merge } from 'lodash';
+import { dirname } from 'path';
+import { Options as PrettierOptions } from 'prettier';
+// import { format } from './formatter';
+import { normalize } from './normalizer';
+import { optimize } from './optimizer';
+import { parse } from './parser';
+// import * as parser from './parser';
+import { dereference } from './resolver';
+import { Try, error, stripExtension } from './utils';
+import { validate } from './validator';
+// import { generate } from './generator'
+import { generate } from './visitor-class-generator';
 
 export { EnumJSONSchema, JSONSchema, NamedEnumJSONSchema } from './types/JSONSchema'
 
@@ -82,12 +84,35 @@ export async function compile(
     _options.cwd += '/'
   }
 
-  return format(generate(
+  // return format(
+  return generate(
     optimize(
       parse(await dereference(normalize(schema, name), _options.cwd), _options)
     ),
     _options
-  ), _options)
+  )
+  // , _options)
 }
 
 export class ValidationError extends Error { }
+
+export { parse } from './parser';
+export { dereference } from './resolver';
+export { normalize } from './normalizer';
+
+// // export function parser.parse: AST;
+// export function parse
+// ( schema: JSONSchema | JSONSchema4Type,
+//   options: Options,
+//   rootSchema = schema as JSONSchema,
+//   keyName?: string,
+//   isSchema = true,
+//   processed: Processed = new Map<JSONSchema | JSONSchema4Type, AST>(),
+//   usedNames = new Set<string>()
+// ): AST {
+//   return parse(schema, options, rootSchema, keyName, isSchema, processed, usedNames);
+// }
+
+// export function dereference() {
+//   return dereference();
+// }

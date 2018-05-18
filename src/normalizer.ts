@@ -1,7 +1,7 @@
-import { whiteBright } from 'cli-color'
-import { cloneDeep } from 'lodash'
-import { JSONSchema, NormalizedJSONSchema } from './types/JSONSchema'
-import { justName, log, mapDeep, toSafeString } from './utils'
+import { whiteBright } from 'cli-color';
+import { cloneDeep } from 'lodash';
+import { JSONSchema, NormalizedJSONSchema } from './types/JSONSchema';
+import { justName, log, mapDeep, toSafeString } from './utils';
 import stringify = require('json-stringify-safe')
 
 type Rule = (schema: JSONSchema, rootSchema: JSONSchema, fileName?: string) => JSONSchema

@@ -1,11 +1,8 @@
-import { whiteBright } from 'cli-color'
-import { omit } from 'lodash'
-import { DEFAULT_OPTIONS, Options } from './index'
-import {
-  AST, ASTWithStandaloneName, hasComment, hasStandaloneName, TArray, TEnum, TInterface, TIntersection,
-  TNamedInterface, TUnion
-} from './types/AST'
-import { log, toSafeString } from './utils'
+import { whiteBright } from 'cli-color';
+import { omit } from 'lodash';
+import { DEFAULT_OPTIONS, Options } from './index';
+import { AST, ASTWithStandaloneName, TArray, TEnum, TInterface, TIntersection, TNamedInterface, TUnion, hasComment, hasStandaloneName } from './types/AST';
+import { log, toSafeString } from './utils';
 
 export function generate(ast: AST, options = DEFAULT_OPTIONS): string {
   return [

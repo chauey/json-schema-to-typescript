@@ -5,16 +5,18 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
+    "build-parent": "cd .. && npm run clean && mkdir dist && npm run build:browser && npm run build:server",    
     "build": "npm run clean && tsc && node index.js",
+    "build-both": "npm run build-parent && npm run build2",
     "clean": "rm -f index.js index.d.ts person.d.ts",
     "build2": "npm run clean2 && tsc && node index.js",
     "clean2": "del index.js index.d.ts oas3-interfaces.ts"
-    
   },
   "dependencies": {
     "@types/node": "^8.0.58",
-    "typescript": "2.6.2",
-    "json-schema-to-typescript": "5.2.0"
+    "json-schema-to-typescript": "5.4.0",
+    "oai-ts-core": "^0.2.15",
+    "typescript": "2.6.2"
   },
   "repository": {
     "type": "git",
